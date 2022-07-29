@@ -1,12 +1,16 @@
 <?php
-
-$recepient = "athopate315121@gmail.com";
-$sitename = "Ajay Thopate";
-
-$name = trim($_POST["name"]);
-$email = trim($_POST["email"]);
-$text = trim($_POST["text"]);
-$message = "Name: $name \nEmail: $email \nText: $text";
-
-$pagetitle = "New message from the \"$sitename\"";
-mail($recepient, $pagetitle, $message, "Content-type: text/plain; charset=\"utf-8\"\n From: $recepient");
+//get data from form  
+$name = $_POST['name'];
+$email= $_POST['email'];
+$message= $_POST['message'];
+$to = "athopate315121@gmail.com";
+$subject = "Mail From website";
+$txt ="Name = ". $name . "\r\n  Email = " . $email . "\r\n Message =" . $message;
+$headers = "From: noreply@yoursite.com" . "\r\n" .
+"CC: somebodyelse@example.com";
+if($email!=NULL){
+    mail($to,$subject,$txt,$headers);
+}
+//redirect
+//header("Location:thankyou.html");
+?>
